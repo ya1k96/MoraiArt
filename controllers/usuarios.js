@@ -49,8 +49,8 @@ ctrl.users = async (req, res) => {
 
 ctrl.validateUser = async (req, res) => {
     const body = req.body
-
-    if( !body) {
+    console.log(body)
+    if( !body ) {
         return res.status(400)
         .json({ message: "Forma no valida" })
     }
