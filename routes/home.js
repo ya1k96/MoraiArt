@@ -7,4 +7,6 @@ module.exports = app => {
     /* Control de usuarios */
     app.post( '/api/usuario', usuarioCtrl.addUser )
     app.get( '/api/usuario', usuarioCtrl.users )
+    app.post( '/api/usuario/validate', usuarioCtrl.validateUser )
+
 }

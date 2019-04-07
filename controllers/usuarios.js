@@ -47,4 +47,30 @@ ctrl.users = async (req, res) => {
     return res.json({ ok:true, usuarios })
 }
 
+ctrl.validateUser = async (req, res) => {
+    const body = req.body
+
+    if( !body) {
+        return res.status(400)
+        .json({ message: "Forma no valida" })
+    }
+
+    const usuario = await Usuario.findOne({ email: body.email })
+    if( !usuario ) {
+        return res.status(400)
+        .json({ error:true, message: "Correo o usuario no valido" })
+    }
+
+    const contrasenaMD5 = crypto.createHash('md5')
+    .update( body.contrasena )
+    .digest("hex")
+
+    if( usuario.contrasena !== contrasenaMD5 ) {
+        return res.status(400)
+        .json({ error:true, message: "Correo o usuario no valido" })
+    }
+
+    res.json({ ok: true })
+}
+
 module.exports = ctrl
