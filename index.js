@@ -32,6 +32,6 @@ mongoose.connect( process.env.DB_URL_PROD , (err, res) =>{
     }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log('run server')
 })
