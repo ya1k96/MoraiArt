@@ -26,7 +26,7 @@ Rutas(app)
 
 
 /* Base de datos */
-mongoose.connect( process.env.DB_URL_DEV , (err, res) =>{
+mongoose.connect( process.env.DB_URL_PROD , (err, res) =>{
     if(!err) {
         console.log('Database: OK')
     }
