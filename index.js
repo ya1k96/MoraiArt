@@ -5,6 +5,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const Rutas = require('./routes/home')
 const Router = express.Router()
+const dotenv = require('dotenv').config()
 
 /* Middlewares */
 app.use( bodyParser.urlencoded({ extended: false }) )
@@ -25,7 +26,7 @@ Rutas(app)
 
 
 /* Base de datos */
-mongoose.connect('mongodb://localhost:27017/morai', (err, res) =>{
+mongoose.connect( process.env.DB_URL_DEV , (err, res) =>{
     if(!err) {
         console.log('Database: OK')
     }
